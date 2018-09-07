@@ -1,13 +1,15 @@
 package com.ruigoncalo.domain
 
-import com.ruigoncalo.domain.model.Posts
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import polanski.option.Option
 
-interface Repository {
+interface Repository<Param, Value> {
 
-    fun getPosts(): Observable<Option<Posts>>
+    fun getAll(): Observable<Option<List<Value>>>
 
-    fun fetchPosts(): Completable
+    fun fetchAll(): Completable
+
+    fun getSingular(param: Param): Single<Option<Value>>
 }

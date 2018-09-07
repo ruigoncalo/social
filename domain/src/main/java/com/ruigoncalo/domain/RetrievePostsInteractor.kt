@@ -1,9 +1,9 @@
 package com.ruigoncalo.domain
 
-import com.ruigoncalo.domain.model.Posts
+import com.ruigoncalo.domain.model.Post
 import io.reactivex.Observable
 
 interface RetrievePostsInteractor {
 
-    fun retrievePosts() : Observable<Posts>
+    fun retrievePosts(): Observable<List<Post>>
 }
