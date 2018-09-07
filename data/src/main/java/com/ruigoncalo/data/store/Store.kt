@@ -6,7 +6,7 @@ import polanski.option.Option
 
 interface Store<Value> {
 
-    fun getSingular(): Observable<Option<Value>>
+    fun get(): Observable<Option<Value>>
 
-    fun putSingular(value: Value): Completable
+    fun put(value: Value): Completable
 }

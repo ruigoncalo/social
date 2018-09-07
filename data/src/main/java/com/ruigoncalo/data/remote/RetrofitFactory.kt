@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitFactory {
 
     companion object {
-        const val BASE_URL = "http://jsonplaceholder.typicode.com/"
+        const val BASE_URL = "https://jsonplaceholder.typicode.com/"
     }
 
     fun build(client: OkHttpClient): Retrofit {

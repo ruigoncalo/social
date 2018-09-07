@@ -10,13 +10,13 @@ class ReactiveStore<Value>(private val cache: Cache<Value>) : Store<Value> {
 
     private val subject: PublishSubject<Option<Value>> = PublishSubject.create()
 
-    override fun getSingular(): Observable<Option<Value>> {
+    override fun get(): Observable<Option<Value>> {
         return Observable.defer { Observable.just(Option.ofObj(cache.get())) }
                 .onErrorResumeNext { _: Throwable -> Observable.just<Option<Value>>(Option.none()) }
                 .concatWith(subject)
     }
 
-    override fun putSingular(value: Value): Completable {
+    override fun put(value: Value): Completable {
         return Completable.fromCallable {
             cache.put(value)
             subject.onNext(Option.ofObj(value))
