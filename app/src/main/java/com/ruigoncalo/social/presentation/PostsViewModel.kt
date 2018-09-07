@@ -34,7 +34,7 @@ class PostsViewModel @Inject constructor(
                         .map { mapper.map(it) }
                         .subscribeOn(Schedulers.io())
                         .subscribe({
-                            postsLiveData.postValue(ViewResource.success(it))
+                            postsLiveData.postValue(ViewResource.success(PostsViewEntity(it)))
                         }, { e ->
                             postsLiveData.postValue(ViewResource.error(e.message))
                         })
