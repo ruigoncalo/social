@@ -42,6 +42,8 @@ dependencies {
     implementation reactiveDependencies.rxAndroid
 
     implementation libDependencies.options
+    implementation libDependencies.picasso
+    implementation libDependencies.circleImageView
 
     implementation injectionDependencies.javaxAnnotation
     implementation injectionDependencies.javaxInject
