@@ -1,8 +1,12 @@
 package com.ruigoncalo.data.cache
 
-interface Cache<Value> {
+interface KeyValueCache<Key, Value> {
 
-    fun get(): Value
+    fun getAll(): List<Value>
 
-    fun put(value: Value)
+    fun putAll(values: List<Pair<Key, Value>>)
+
+    fun getSingular(key: Key): Value
+
+    fun putSingular(key: Key, value: Value)
 }

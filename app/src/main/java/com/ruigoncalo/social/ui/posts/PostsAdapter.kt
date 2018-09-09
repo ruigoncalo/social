@@ -5,14 +5,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ruigoncalo.social.R
-import com.ruigoncalo.social.presentation.model.PostViewEntity
+import com.ruigoncalo.social.presentation.model.UserPostViewEntity
 import com.ruigoncalo.social.presentation.model.PostsViewEntity
 
 class PostsAdapter(private val context: Context) : RecyclerView.Adapter<PostItemView>() {
 
     private val inflater by lazy { LayoutInflater.from(context) }
 
-    private val posts = mutableListOf<PostViewEntity>()
+    private val posts = mutableListOf<UserPostViewEntity>()
 
     override fun getItemCount(): Int {
         return posts.size

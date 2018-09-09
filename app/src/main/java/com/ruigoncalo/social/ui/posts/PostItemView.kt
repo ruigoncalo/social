@@ -6,17 +6,17 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.ruigoncalo.social.R
-import com.ruigoncalo.social.presentation.model.PostViewEntity
+import com.ruigoncalo.social.presentation.model.UserPostViewEntity
 
 class PostItemView(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(postViewEntity: PostViewEntity) {
+    fun bind(postViewEntity: UserPostViewEntity) {
         val titleView = view.findViewById<TextView>(R.id.postTitleText)
         val bodyView = view.findViewById<TextView>(R.id.postBodyText)
         val imageView = view.findViewById<ImageView>(R.id.userImageView)
         val userNameView = view.findViewById<TextView>(R.id.userNameText)
 
-        imageView.loadImage(postViewEntity.user.avatarId,
+        imageView.loadImage(postViewEntity.user.avatarUrl,
                 ContextCompat.getDrawable(view.context, R.drawable.ic_launcher_background),
                 ContextCompat.getDrawable(view.context, R.drawable.ic_face))
         userNameView.text = postViewEntity.user.name
