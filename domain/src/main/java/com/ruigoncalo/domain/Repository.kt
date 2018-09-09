@@ -2,14 +2,15 @@ package com.ruigoncalo.domain
 
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 import polanski.option.Option
 
-interface Repository<Param, Value> {
+interface Repository<Key, Value> {
 
     fun getAll(): Observable<Option<List<Value>>>
 
     fun fetchAll(): Completable
 
-    fun getSingular(param: Param): Single<Option<Value>>
+    fun getSingular(key: Key): Observable<Option<Value>>
+
+    fun fetchSingular(key: Key): Completable
 }
