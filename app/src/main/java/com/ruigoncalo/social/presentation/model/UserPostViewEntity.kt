@@ -1,6 +1,6 @@
 package com.ruigoncalo.social.presentation.model
 
-data class PostViewEntity(val id: Int,
-                          val user: UserViewEntity,
-                          val title: String,
-                          val body: String)
+data class UserPostViewEntity(val postId: Int,
+                              val user: UserViewEntity,
+                              val title: String,
+                              val body: String)

@@ -1,4 +1,4 @@
-package com.ruigoncalo.social.ui
+package com.ruigoncalo.social.ui.posts
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ruigoncalo.social.R
 import com.ruigoncalo.social.presentation.model.UserPostViewEntity
-import com.ruigoncalo.social.presentation.model.PostsViewEntity
 
-class PostsAdapter(private val context: Context) : RecyclerView.Adapter<PostItemView>() {
+class PostsAdapter(private val context: Context,
+                   private val listener: (Int) -> Unit) : RecyclerView.Adapter<PostItemView>() {
 
     private val inflater by lazy { LayoutInflater.from(context) }
 
@@ -20,15 +20,15 @@ class PostsAdapter(private val context: Context) : RecyclerView.Adapter<PostItem
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostItemView {
         val view = inflater.inflate(R.layout.post_item_view, parent, false)
-        return PostItemView(view)
+        return PostItemView(view, listener)
     }
 
     override fun onBindViewHolder(holder: PostItemView, position: Int) {
         holder.bind(posts[position])
     }
 
-    fun showPosts(postsViewEntity: PostsViewEntity) {
-        postsViewEntity.posts.forEach { posts.add(it) }
+    fun showPosts(postsViewEntity: List<UserPostViewEntity>) {
+        postsViewEntity.forEach { posts.add(it) }
         notifyDataSetChanged()
     }
 }

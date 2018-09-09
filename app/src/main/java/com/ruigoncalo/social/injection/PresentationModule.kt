@@ -2,7 +2,8 @@ package com.ruigoncalo.social.injection
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.ruigoncalo.social.presentation.PostsViewModel
+import com.ruigoncalo.social.presentation.detail.PostDetailViewModel
+import com.ruigoncalo.social.presentation.posts.PostsViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -16,6 +17,11 @@ abstract class PresentationModule {
     @IntoMap
     @ViewModelKey(PostsViewModel::class)
     abstract fun bindPostsViewModel(viewModel: PostsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PostDetailViewModel::class)
+    abstract fun bindPostDetailViewModel(viewModel: PostDetailViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

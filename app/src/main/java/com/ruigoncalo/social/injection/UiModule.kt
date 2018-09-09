@@ -1,6 +1,7 @@
 package com.ruigoncalo.social.injection
 
-import com.ruigoncalo.social.ui.PostsActivity
+import com.ruigoncalo.social.ui.detail.PostDetailActivity
+import com.ruigoncalo.social.ui.posts.PostsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,6 +9,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class UiModule {
 
     @ContributesAndroidInjector
-    abstract fun contributesMessagesActivity(): PostsActivity
+    abstract fun contributesPostsActivity(): PostsActivity
 
+    @ContributesAndroidInjector
+    abstract fun contributesPostDetailActivity(): PostDetailActivity
 }
