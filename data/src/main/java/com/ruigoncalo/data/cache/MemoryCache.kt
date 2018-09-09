@@ -1,6 +1,6 @@
 package com.ruigoncalo.data.cache
 
-class MemoryKeyValueCache<Key, Value> : KeyValueCache<Key, Value> {
+class MemoryCache<Key, Value> : Cache<Key, Value> {
 
     private var valuesMap: HashMap<Key, Value> = hashMapOf()
 

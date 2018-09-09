@@ -4,7 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import polanski.option.Option
 
-interface KeyValueStore<Key, Value> {
+interface Store<Key, Value> {
 
     fun getAll(): Observable<Option<List<Value>>>
 

@@ -1,27 +1,24 @@
 package com.ruigoncalo.data
 
+import com.ruigoncalo.data.model.CommentRaw
 import com.ruigoncalo.data.model.PostRaw
 import com.ruigoncalo.data.model.UserRaw
+import com.ruigoncalo.domain.model.Comment
 import com.ruigoncalo.domain.model.Post
 import com.ruigoncalo.domain.model.User
 import javax.inject.Inject
 
 class DataMapper @Inject constructor() {
 
-    fun map(postRawList: List<PostRaw>, userRawList: List<UserRaw>): List<Post> {
-        return postRawList.mapNotNull { postRaw ->
-            val user = userRawList.firstOrNull { it.id == postRaw.userId }
-            postRaw.toModel(user)
-        }
+    fun map(raw: UserRaw): User {
+        return User(raw.id, raw.name, raw.username, raw.email, raw.phone, raw.website)
     }
-}
 
-fun PostRaw.toModel(userRaw: UserRaw?): Post? {
-    return userRaw?.let {
-        Post(this.id, it.toModel(), this.title, this.body)
+    fun map(raw: PostRaw): Post {
+        return Post(raw.id, raw.userId, raw.title, raw.body)
     }
-}
 
-fun UserRaw.toModel(): User {
-    return User(this.id, this.name, this.username, this.email, this.phone, this.website)
+    fun map(raw: CommentRaw): Comment {
+        return Comment(raw.id, raw.postId, raw.name, raw.email, raw.body)
+    }
 }

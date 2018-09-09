@@ -1,6 +1,6 @@
 package com.ruigoncalo.data.cache
 
-interface KeyValueCache<Key, Value> {
+interface Cache<Key, Value> {
 
     fun getAll(): List<Value>
 

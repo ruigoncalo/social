@@ -1,12 +1,12 @@
 package com.ruigoncalo.data.store
 
-import com.ruigoncalo.data.cache.KeyValueCache
+import com.ruigoncalo.data.cache.Cache
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import polanski.option.Option
 
-class ReactiveKeyValueStore<Key, Value>(private val cache: KeyValueCache<Key, Value>) : KeyValueStore<Key, Value> {
+class ReactiveStore<Key, Value>(private val cache: Cache<Key, Value>) : Store<Key, Value> {
 
     private val subjectSingular: PublishSubject<Option<Value>> = PublishSubject.create()
     private val subjectAll: PublishSubject<Option<List<Value>>> = PublishSubject.create()
