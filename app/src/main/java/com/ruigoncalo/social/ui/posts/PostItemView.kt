@@ -14,7 +14,6 @@ class PostItemView(private val view: View,
 
     fun bind(postViewEntity: UserPostViewEntity) {
         val titleView = view.findViewById<TextView>(R.id.postTitleText)
-        val bodyView = view.findViewById<TextView>(R.id.postBodyText)
         val imageView = view.findViewById<ImageView>(R.id.userImageView)
         val userNameView = view.findViewById<TextView>(R.id.userNameText)
 
@@ -24,7 +23,6 @@ class PostItemView(private val view: View,
 
         userNameView.text = postViewEntity.user.name
         titleView.text = postViewEntity.title
-        bodyView.text = postViewEntity.body
 
         view.setOnClickListener {
             listener.invoke(postViewEntity.postId)

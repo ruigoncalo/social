@@ -4,9 +4,9 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.widget.Toast
 import com.ruigoncalo.social.R
 import com.ruigoncalo.social.injection.ViewModelFactory
@@ -88,6 +88,7 @@ class PostsActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context).apply {
                 orientation = RecyclerView.VERTICAL
             }
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
 
@@ -96,11 +97,11 @@ class PostsActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        Log.d("Test", "Show Loading")
+
     }
 
     private fun hideLoading() {
-        Log.d("Test", "Hide Loading")
+
     }
 
     private fun showError(errorMessage: String) {
@@ -108,6 +109,6 @@ class PostsActivity : AppCompatActivity() {
     }
 
     private fun hideError() {
-        Log.d("Test", "Hide Error")
+
     }
 }
