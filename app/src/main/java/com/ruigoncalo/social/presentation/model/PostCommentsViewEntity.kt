@@ -1,3 +1,3 @@
 package com.ruigoncalo.social.presentation.model
 
-data class PostCommentsViewEntity(val count: String)
+data class PostCommentsViewEntity(val commentsText: String)

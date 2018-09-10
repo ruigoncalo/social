@@ -7,9 +7,12 @@ import com.ruigoncalo.social.presentation.model.CommentViewEntity
 import com.ruigoncalo.social.presentation.model.PostCommentsViewEntity
 import com.ruigoncalo.social.presentation.model.UserPostViewEntity
 import com.ruigoncalo.social.presentation.model.UserViewEntity
+import com.ruigoncalo.social.ui.StringsProvider
 import javax.inject.Inject
 
-class ViewEntityMapper @Inject constructor(private val avatarUrlGenerator: AvatarUrlGenerator) {
+class ViewEntityMapper @Inject constructor(
+        private val avatarUrlGenerator: AvatarUrlGenerator,
+        private val stringsProvider: StringsProvider) {
 
     fun map(model: UserPost): UserPostViewEntity {
         return UserPostViewEntity(model.postId, map(model.user), model.title, model.body)
@@ -24,6 +27,7 @@ class ViewEntityMapper @Inject constructor(private val avatarUrlGenerator: Avata
     }
 
     fun map(modelList: List<Comment>): PostCommentsViewEntity {
-        return PostCommentsViewEntity(modelList.size.toString())
+        val commentsText = "${modelList.size} ${stringsProvider.commentLabel()}"
+        return PostCommentsViewEntity(commentsText)
     }
 }

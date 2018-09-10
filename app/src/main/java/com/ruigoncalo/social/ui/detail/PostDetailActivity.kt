@@ -134,7 +134,7 @@ class PostDetailActivity : AppCompatActivity() {
     }
 
     private fun showComments(postComments: PostCommentsViewEntity) {
-        commentsText.text = postComments.count
+        commentsText.text = postComments.commentsText
     }
 
     private fun showLoading() {

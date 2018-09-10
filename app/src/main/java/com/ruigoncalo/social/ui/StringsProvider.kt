@@ -10,4 +10,8 @@ class StringsProvider @Inject constructor(private val context: Context) {
         return context.getString(R.string.generic_error)
     }
 
+    fun commentLabel(): String {
+        return context.getString(R.string.comments)
+    }
+
 }
