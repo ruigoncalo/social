@@ -4,7 +4,11 @@ import javax.inject.Inject
 
 class AvatarUrlGenerator @Inject constructor() {
 
+    companion object {
+        private const val AVATAR_SOURCE = "https://api.adorable.io/avatars"
+    }
+
     fun generateAvatar(id: Int): String {
-        return "https://api.adorable.io/avatars/$id"
+        return "$AVATAR_SOURCE/$id"
     }
 }
