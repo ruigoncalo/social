@@ -8,7 +8,7 @@ import polanski.option.Option
 import polanski.option.OptionUnsafe
 import javax.inject.Inject
 
-class RetrieveUserUseCase @Inject constructor(
+class RetrieveUsersUseCase @Inject constructor(
         private val repository: Repository<Int, User>) {
 
     fun retrieveUsers(): Observable<List<User>> {

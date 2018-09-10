@@ -9,20 +9,20 @@ import javax.inject.Inject
 
 class RetrieveUsersPostsUseCase @Inject constructor(
         private val retrievePostsUseCase: RetrievePostsUseCase,
-        private val retrieveUserUseCase: RetrieveUserUseCase,
+        private val retrieveUsersUseCase: RetrieveUsersUseCase,
         private val mapper: UserPostMapper) : RetrieveUsersPostsInteractor {
 
     override fun retrieveUsersPosts(): Observable<List<UserPost>> {
         return retrievePostsUseCase.retrievePosts()
-                .zipWith(retrieveUserUseCase.retrieveUsers(),
-                        BiFunction<List<Post>, List<User>, List<UserPost>> { posts, users -> mapper.reduce(posts, users) })
+                .zipWith(retrieveUsersUseCase.retrieveUsers(),
+                        BiFunction<List<Post>, List<User>, List<UserPost>> { posts, users -> mapper.reduce(users, posts) })
     }
 
     override fun retrieveUserPost(key: Int): Observable<UserPost> {
         return retrievePostsUseCase.retrievePost(key)
                 .flatMap { post ->
-                    retrieveUserUseCase.retrieveUser(post.userId)
-                            .map { mapper.map(it, post) }
+                    retrieveUsersUseCase.retrieveUser(post.userId)
+                            .map { mapper.reduce(it, post) }
                 }
     }
 }

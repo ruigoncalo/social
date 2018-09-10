@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class UserPostMapper @Inject constructor() {
 
-    fun reduce(posts: List<Post>, users: List<User>): List<UserPost> {
+    fun reduce(users: List<User>, posts: List<Post>): List<UserPost> {
         return posts.mapNotNull { post ->
             val user = users.firstOrNull { post.userId == it.id }
             user?.let {
@@ -16,7 +16,7 @@ class UserPostMapper @Inject constructor() {
         }
     }
 
-    fun map(user: User, post: Post): UserPost {
+    fun reduce(user: User, post: Post): UserPost {
         return UserPost(post.id, user, post.title, post.body)
     }
 }
